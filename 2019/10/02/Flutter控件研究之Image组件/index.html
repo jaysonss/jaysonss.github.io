@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Flutter," />
 
 
 
@@ -79,13 +79,25 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Flutter版本： Flutter (Channel master, v1.9.1, on Mac OS X 10.14.4 18E226, locale zh-Hans-CN)  基本用法123456789101112131415161718192021222324const Image(&amp;#123;    Key key,    @required this.image,    this.">
+<meta name="keywords" content="Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter控件研究之Image组件.md">
+<meta property="og:url" content="http://yoursite.com/2019/10/02/Flutter控件研究之Image组件/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Flutter版本： Flutter (Channel master, v1.9.1, on Mac OS X 10.14.4 18E226, locale zh-Hans-CN)  基本用法123456789101112131415161718192021222324const Image(&amp;#123;    Key key,    @required this.image,    this.">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://pyqs1xv2y.bkt.clouddn.com/Flutter%E4%B8%AD%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD.png">
+<meta property="og:image" content="http://pyqs1xv2y.bkt.clouddn.com/%E6%9C%AA%E5%8E%8B%E7%BC%A9%E7%9A%84%E5%86%85%E5%AD%98%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="http://pyqs1xv2y.bkt.clouddn.com/%E5%8E%8B%E7%BC%A9%E8%BF%87%E7%9A%84%E5%86%85%E5%AD%98%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="http://pyqs1xv2y.bkt.clouddn.com/%E6%98%BE%E7%A4%BA%E4%B8%AD.png">
+<meta property="og:image" content="http://pyqs1xv2y.bkt.clouddn.com/%E9%94%80%E6%AF%81.png">
+<meta property="og:image" content="http://pyqs1xv2y.bkt.clouddn.com/%E6%89%8B%E5%8A%A8%E9%94%80%E6%AF%81.png">
+<meta property="og:updated_time" content="2019-10-03T10:16:03.445Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Flutter控件研究之Image组件.md">
+<meta name="twitter:description" content="Flutter版本： Flutter (Channel master, v1.9.1, on Mac OS X 10.14.4 18E226, locale zh-Hans-CN)  基本用法123456789101112131415161718192021222324const Image(&amp;#123;    Key key,    @required this.image,    this.">
+<meta name="twitter:image" content="http://pyqs1xv2y.bkt.clouddn.com/Flutter%E4%B8%AD%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD.png">
 
 
 
@@ -115,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/10/02/Flutter控件研究之Image组件/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title>Flutter控件研究之Image组件.md | Hexo</title>
   
 
 
@@ -140,8 +152,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,9 +245,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -266,9 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/02/Flutter控件研究之Image组件/" itemprop="url">Flutter控件研究之Image组件.md</a></h1>
+          <h1 class="post-title" itemprop="name headline">Flutter控件研究之Image组件.md</h1>
         
 
         <div class="post-meta">
@@ -329,9 +338,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>Flutter版本： Flutter (Channel master, v1.9.1, on Mac OS X 10.14.4 18E226, locale zh-Hans-CN)</p>
 </blockquote>
 <h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const Image(&#123;</span><br><span class="line">    Key key,</span><br><span class="line">    @required this.image,</span><br><span class="line">    this.frameBuilder,</span><br><span class="line">    this.loadingBuilder,</span><br><span class="line">    this.semanticLabel,</span><br><span class="line">    this.excludeFromSemantics = false,</span><br><span class="line">    this.width,</span><br><span class="line">    this.height,</span><br><span class="line">    this.color,</span><br><span class="line">    this.colorBlendMode,</span><br><span class="line">    this.fit,</span><br><span class="line">    this.alignment = Alignment.center,</span><br><span class="line">    this.repeat = ImageRepeat.noRepeat,</span><br><span class="line">    this.centerSlice,</span><br><span class="line">    this.matchTextDirection = false,</span><br><span class="line">    this.gaplessPlayback = false,</span><br><span class="line">    this.filterQuality = FilterQuality.low,</span><br><span class="line">  &#125;) : assert(image != null),</span><br><span class="line">       assert(alignment != null),</span><br><span class="line">       assert(repeat != null),</span><br><span class="line">       assert(filterQuality != null),</span><br><span class="line">       assert(matchTextDirection != null),</span><br><span class="line">       super(key: key);</span><br></pre></td></tr></table></figure>
@@ -396,8 +403,6 @@
 <p>可以看到已经看不到图片对象了，但是需要注意的是该方法会彻底回收ui.Image对象,所以如果应用到生产项目需要考虑到<strong>其他可能引用到ui.Image的地方</strong>，毕竟这个方案有点过于简单粗暴了。下面是参考伪码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">class CacheableNetworkImage extends ImageProvider&lt;NetworkImageSSL&gt; &#123;</span><br><span class="line">  CacheableNetworkImage(this.url,</span><br><span class="line">      &#123;this.scale = 1.0, this.headers&#125;)</span><br><span class="line">      : assert(url != null),</span><br><span class="line">        assert(scale != null);</span><br><span class="line"></span><br><span class="line">  final String url;</span><br><span class="line"></span><br><span class="line">  final double scale;</span><br><span class="line"></span><br><span class="line">  final Map&lt;String, String&gt; headers;</span><br><span class="line">  </span><br><span class="line">  ///////////保存imageInfo对象////////////</span><br><span class="line">  ImageInfo imageInfo;</span><br><span class="line">  ///////////保存imageInfo对象////////////</span><br><span class="line"></span><br><span class="line">  ////////////页面销毁时调用///////////////</span><br><span class="line">  void dispose() &#123;</span><br><span class="line">    imageInfo?.image?.dispose();</span><br><span class="line">  &#125;</span><br><span class="line">  ////////////页面销毁时调用///////////////</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  ImageStreamCompleter load(NetworkImageSSL key) &#123;</span><br><span class="line">    var multiFrameImageStreamCompleter = new MultiFrameImageStreamCompleter(</span><br><span class="line">        codec: _loadAsync(key),</span><br><span class="line">        scale: key.scale,</span><br><span class="line">        informationCollector: () &#123;</span><br><span class="line">          List&lt;DiagnosticsNode&gt; informationCollector;</span><br><span class="line">          informationCollector.add(DiagnosticsProperty(&apos;Image provider&apos;, this));</span><br><span class="line">          informationCollector.add(DiagnosticsProperty(&apos;Image key&apos;, key));</span><br><span class="line">          return informationCollector;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    ///添加Error Callback</span><br><span class="line">    ImageStreamListener listener;</span><br><span class="line">    listener = ImageStreamListener((imageInfo, ret) &#123;</span><br><span class="line">    </span><br><span class="line">      /////////保存ImageInfo对象/////////</span><br><span class="line">      this.imageInfo = imageInfo;</span><br><span class="line">      /////////保存ImageInfo对象/////////</span><br><span class="line">      </span><br><span class="line">      multiFrameImageStreamCompleter.removeListener(listener);</span><br><span class="line">    &#125;, onError: (ex, stack) &#123;</span><br><span class="line">      multiFrameImageStreamCompleter.removeListener(listener);</span><br><span class="line">      imageErrorListener?.call(ex, stack);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    multiFrameImageStreamCompleter.addListener(listener);</span><br><span class="line">    return multiFrameImageStreamCompleter;</span><br><span class="line">  &#125;</span><br><span class="line">  ......................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -412,14 +417,20 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -429,10 +440,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -440,6 +452,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -460,8 +486,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -512,6 +547,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法"><span class="nav-number">1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片加载"><span class="nav-number">2.</span> <span class="nav-text">图片加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片优化"><span class="nav-number">3.</span> <span class="nav-text">图片优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、没法定制Error-Widget"><span class="nav-number">3.1.</span> <span class="nav-text">1、没法定制Error Widget</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、缓存不友好"><span class="nav-number">3.2.</span> <span class="nav-text">2、缓存不友好</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、无法降低的内存占用"><span class="nav-number">3.3.</span> <span class="nav-text">3、无法降低的内存占用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、打开页面"><span class="nav-number">3.3.1.</span> <span class="nav-text">1、打开页面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、销毁页面"><span class="nav-number">3.3.2.</span> <span class="nav-text">2、销毁页面</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、销毁页面-手动清缓存"><span class="nav-number">3.4.</span> <span class="nav-text">3、销毁页面+手动清缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、调用native方法回收"><span class="nav-number">3.5.</span> <span class="nav-text">4、调用native方法回收</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -644,6 +695,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -661,6 +716,18 @@
       <script id="dsq-count-scr" src="https://Jaysonss.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/10/02/Flutter控件研究之Image组件/';
+          this.page.identifier = '2019/10/02/Flutter控件研究之Image组件/';
+          this.page.title = 'Flutter控件研究之Image组件.md';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Jaysonss.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

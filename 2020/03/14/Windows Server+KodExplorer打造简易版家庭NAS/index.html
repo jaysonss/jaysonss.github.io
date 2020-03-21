@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="Jayson&#39;s Blog">
 <meta property="og:description" content="笔者家里的电信宽带刚申请换上了公网ip, 加上有一台闲置的windows电脑，所以想到了把它打造成家庭nas。 中间经历了各种情况，踩了很多坑，现记录如下：  公网ip无用家里网络是电信网关+TPLink, 电信网关负责拨号获取ip，TPLink做路由转发。在成功切换成公网ip后，笔者兴致冲冲的去ping, 结果发现居然是req timeout，尝试放开各种端口发现也不通。笔者所用网关型号为tew">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-15T13:52:40.538Z">
+<meta property="og:updated_time" content="2020-03-15T13:58:57.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows Server+KodExplorer打造简易版家庭NAS">
 <meta name="twitter:description" content="笔者家里的电信宽带刚申请换上了公网ip, 加上有一台闲置的windows电脑，所以想到了把它打造成家庭nas。 中间经历了各种情况，踩了很多坑，现记录如下：  公网ip无用家里网络是电信网关+TPLink, 电信网关负责拨号获取ip，TPLink做路由转发。在成功切换成公网ip后，笔者兴致冲冲的去ping, 结果发现居然是req timeout，尝试放开各种端口发现也不通。笔者所用网关型号为tew">
@@ -175,7 +175,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-15 21:52:40" itemprop="dateModified" datetime="2020-03-15T21:52:40+08:00">2020-03-15</time>
+                <time title="Modified: 2020-03-15 21:58:57" itemprop="dateModified" datetime="2020-03-15T21:58:57+08:00">2020-03-15</time>
               </span>
 
           
@@ -207,7 +207,7 @@
 <ul>
 <li>下载xampp, 这是一个工具集，包含了Apache Server, MySql, FileZellia等，但其实主要用到的还是Apache Server, MySql</li>
 <li>下载KodExplorer, 加压到xampp目录下替换htdocs文件夹里的所有内容</li>
-<li>在xampp控制面板启动即可,默认端口为80，可以根据需要修改</li>
+<li>在xampp控制面板启动即可，默认端口为80，可以根据需要修改</li>
 </ul>
 <h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><p>笔者在阿里云万网注册了一个域名，但是直接绑定家里的ip感觉不妥，因为家里的公网ip是不断变化的，如果绑定某一个域名肯定要频繁改，为了规避麻烦笔者采用了DDNS方案。DDNS首先想到的就是花生壳，但是这货注册太麻烦，直接弃用。笔者直接采用tplink自带的ddns, 绑定了一个域名A.tpddns.cn，然后在万网域名解析里加上了一个CNAME记录指向了这个A.tpddns.cn，至此，域名的问题就算是解决了。</p>
 <h2 id="虚拟服务器配置"><a href="#虚拟服务器配置" class="headerlink" title="虚拟服务器配置"></a>虚拟服务器配置</h2><p>家里的windows server是内网ip, 怎么供外网访问呢？在路由器设置里笔者发现了两种方案：</p>
@@ -230,13 +230,13 @@
 <p>进入盘符备份</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd smb</span><br><span class="line">zip -r -FS backup.zip $&#123;数据目录&#125;</span><br></pre></td></tr></table></figure>
 <p>上传oss</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>##安装oss2</span><br><span class="line">pip install oss2</span><br><span class="line"><span class="meta">#</span>##上传(oss.py可以直接在官网demo中找到，自己填上AccessId和AccessSecret即可)</span><br><span class="line">python oss.py smb/backup.zip</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>#安装oss2</span><br><span class="line">pip install oss2</span><br><span class="line"><span class="meta">#</span>#上传(oss.py可以直接在官网demo中找到，自己填上AccessId和AccessSecret即可)</span><br><span class="line">python oss.py smb/backup.zip</span><br></pre></td></tr></table></figure>
 <p>上述任务可以做成定时任务，Linux上可以用crontab, Mac上推荐用launchctl, 下面推荐launchctl的方法</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Library/LaunchAgents</span><br><span class="line">touch com.kod.backup.plist</span><br><span class="line">launchctl load -w com.kod.backup.plist</span><br><span class="line">launchctl start com.kod.backup.plist</span><br></pre></td></tr></table></figure>
 <p>如果要停止定时任务</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">launchctl stop com.kod.backup.plist</span><br><span class="line">launchctl unload -w com.kod.backup.plist</span><br></pre></td></tr></table></figure>
 <p>下面是笔者写的com.kod.backup.plist内容，每隔10个小时执行一次部署脚本</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span><br><span class="line">&lt;plist version="1.0"&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">	&lt;key&gt;Label&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;com.kod.backup&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;ProgramArguments&lt;/key&gt;</span><br><span class="line">	&lt;array&gt;</span><br><span class="line"><span class="meta">	  #</span>## 这是执行脚本的位置</span><br><span class="line">		&lt;string&gt;/Users/xxx/xxx/backup.sh&lt;/string&gt;</span><br><span class="line">	&lt;/array&gt;</span><br><span class="line">	&lt;key&gt;StartInterval&lt;/key&gt;</span><br><span class="line"><span class="meta">	#</span>## 单位为秒</span><br><span class="line">	&lt;integer&gt;36000&lt;/integer&gt;</span><br><span class="line"><span class="meta">	#</span>## 日志目录</span><br><span class="line">	&lt;key&gt;StandardOutPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/xxx/xxx/run.log&lt;/string&gt;</span><br><span class="line"><span class="meta">	#</span>## 错误日志目录</span><br><span class="line">	&lt;key&gt;StandardErrorPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/xxx/xx/run.err&lt;/string&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span><br><span class="line">&lt;plist version="1.0"&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">	&lt;key&gt;Label&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;com.kod.backup&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;ProgramArguments&lt;/key&gt;</span><br><span class="line">	&lt;array&gt;</span><br><span class="line"><span class="meta">	  #</span>#这是执行脚本的位置</span><br><span class="line">		&lt;string&gt;/Users/xxx/xxx/backup.sh&lt;/string&gt;</span><br><span class="line">	&lt;/array&gt;</span><br><span class="line"><span class="meta">	#</span>#周期性执行，可以替换为特定时间点执行StartCalendarInterval</span><br><span class="line">	&lt;key&gt;StartInterval&lt;/key&gt;</span><br><span class="line"><span class="meta">	#</span>#单位为秒</span><br><span class="line">	&lt;integer&gt;36000&lt;/integer&gt;</span><br><span class="line"><span class="meta">	#</span>#日志目录</span><br><span class="line">	&lt;key&gt;StandardOutPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/xxx/xxx/run.log&lt;/string&gt;</span><br><span class="line"><span class="meta">	#</span>#错误日志目录</span><br><span class="line">	&lt;key&gt;StandardErrorPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/xxx/xx/run.err&lt;/string&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br></pre></td></tr></table></figure>
 <p>这里有几个点需要注意：</p>
 <ul>
 <li>脚本是否具有可执行权限，如果没有直接<code>chmod +x</code>解决</li>
@@ -263,7 +263,10 @@
     <a href="/2020/02/16/Android Native与Flutter混合开发实践/" rel="prev" title="Android Native与Flutter混合开发探究">
       <i class="fa fa-chevron-left"></i> Android Native与Flutter混合开发探究
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/20/支持新的Flutter Android插件API（翻译）/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -337,7 +340,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

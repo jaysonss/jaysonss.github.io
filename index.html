@@ -144,7 +144,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/支持新的Flutter Android插件API（翻译）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/支持新的Flutter Android插件API（翻译）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -158,7 +158,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/20/支持新的Flutter Android插件API（翻译）/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2020/03/21/支持新的Flutter Android插件API（翻译）/" class="post-title-link" itemprop="url">支持新的Flutter Android插件API（翻译）</a>
         </h1>
 
         <div class="post-meta">
@@ -167,16 +167,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-03-20 21:29:46" itemprop="dateCreated datePublished" datetime="2020-03-20T21:29:46+08:00">2020-03-20</time>
+              <time title="Created: 2020-03-21 10:40:18 / Modified: 10:41:56" itemprop="dateCreated datePublished" datetime="2020-03-21T10:40:18+08:00">2020-03-21</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 10:36:38" itemprop="dateModified" datetime="2020-03-21T10:36:38+08:00">2020-03-21</time>
-              </span>
 
           
 
@@ -189,16 +183,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<p>title:支持新的Flutter Android插件API（翻译）</p>
-<p>date:2020-03-21 10:33:21</p>
-<p>tags: </p>
-<ul>
-<li>Flutter</li>
-<li>混合开发</li>
-</ul>
-<hr>
-<p>原文链接：<a href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration" target="_blank" rel="noopener">Supporting the new Android plugins APIs</a></p>
+          <p>原文链接：<a href="https://flutter.dev/docs/development/packages-and-plugins/plugin-api-migration" target="_blank" rel="noopener">Supporting the new Android plugins APIs</a></p>
 <p>随着1.12版本的发布，插件API也发生了变更。旧的API基于<code>PluginRegistry.Registrar</code>,这种方式不会立即被废弃，但是我们仍然鼓励开发者尽量使用基于<code>FlutterPlugin</code>的新的集成方式。</p>
 <p>和旧的API相比，新的API更加依赖于组件的生命周期。比如说<code>PluginRegistry.Registrar.activity()</code>可能返回的是null，因为FlutterView可能并没有和任何Activity绑定。</p>
 <p>换句话说，采用旧的API开发插件可能会产生不可预知的问题。目前，Flutter官方提供的插件均已完成迁移。</p>

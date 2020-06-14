@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Code 4 Fun.">
-<meta name="keywords" content="Android, Flutter, Linux">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jayson&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/10/index.html">
+  <meta name="description" content="一、文件压缩Linux中常见的文件压缩算法有三种：gzip bzip2 xz ,它们的压缩率逐渐上升，但是压缩耗时也逐渐增加。  gzip  压缩命令：gzip -9 -c filename &amp;gt; filename.gz  -9表示压缩比，理论上可以指定1-9，默认为6  解压命令：gzip -d filename.gz 查看命令：zcat filename.gz  bzip2  压缩命令：b">
+<meta name="keywords" content="Linux学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux压缩与解压缩指令">
+<meta property="og:url" content="http://yoursite.com/2020/06/14/Linux压缩与解压缩指令/index.html">
 <meta property="og:site_name" content="Jayson&#39;s Blog">
-<meta property="og:description" content="Code 4 Fun.">
+<meta property="og:description" content="一、文件压缩Linux中常见的文件压缩算法有三种：gzip bzip2 xz ,它们的压缩率逐渐上升，但是压缩耗时也逐渐增加。  gzip  压缩命令：gzip -9 -c filename &amp;gt; filename.gz  -9表示压缩比，理论上可以指定1-9，默认为6  解压命令：gzip -d filename.gz 查看命令：zcat filename.gz  bzip2  压缩命令：b">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-14T05:28:00.135Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jayson&#39;s Blog">
-<meta name="twitter:description" content="Code 4 Fun.">
+<meta name="twitter:title" content="Linux压缩与解压缩指令">
+<meta name="twitter:description" content="一、文件压缩Linux中常见的文件压缩算法有三种：gzip bzip2 xz ,它们的压缩率逐渐上升，但是压缩耗时也逐渐增加。  gzip  压缩命令：gzip -9 -c filename &amp;gt; filename.gz  -9表示压缩比，理论上可以指定1-9，默认为6  解压命令：gzip -d filename.gz 查看命令：zcat filename.gz  bzip2  压缩命令：b">
 
-<link rel="canonical" href="http://yoursite.com/archives/2019/10/">
+<link rel="canonical" href="http://yoursite.com/2020/06/14/Linux压缩与解压缩指令/">
 
 
 <script id="page-configurations">
@@ -40,11 +41,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>Archive | Jayson's Blog</title>
+  <title>Linux压缩与解压缩指令 | Jayson's Blog</title>
   
 
 
@@ -139,49 +140,119 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 5 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="default">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/14/Linux压缩与解压缩指令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayson">
+      <meta itemprop="description" content="Code 4 Fun.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayson's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux压缩与解压缩指令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-14 13:25:53 / Modified: 13:28:00" itemprop="dateCreated datePublished" datetime="2020-06-14T13:25:53+08:00">2020-06-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
+        <h4 id="一、文件压缩"><a href="#一、文件压缩" class="headerlink" title="一、文件压缩"></a>一、文件压缩</h4><p>Linux中常见的文件压缩算法有三种：<code>gzip</code> <code>bzip2</code> <code>xz</code> ,它们的压缩率逐渐上升，但是压缩耗时也逐渐增加。</p>
+<ol>
+<li>gzip</li>
+</ol>
+<p>压缩命令：<code>gzip -9 -c filename &gt; filename.gz</code></p>
+<blockquote>
+<p>-9表示压缩比，理论上可以指定1-9，默认为6</p>
+</blockquote>
+<p>解压命令：<code>gzip -d filename.gz</code></p>
+<p>查看命令：<code>zcat filename.gz</code></p>
+<ol start="2">
+<li>bzip2</li>
+</ol>
+<p>压缩命令：<code>bzip2 -9 -c filename &gt; filename.bz2</code></p>
+<blockquote>
+<p>-9表示压缩比，理论上可以指定1-9，默认为6</p>
+</blockquote>
+<p>解压命令：<code>bzip2 -d filename.bz2</code></p>
+<p>查看命令：<code>bzcat filename.bz2</code></p>
+<ol start="3">
+<li>xz</li>
+</ol>
+<p>压缩命令：<code>xz -9 -c filename &gt; filename.xz</code></p>
+<blockquote>
+<p>-9表示压缩比，理论上可以指定1-9，默认为6</p>
+</blockquote>
+<p>保留原文件名压缩指令: xz -k filename , 该命令等价于xz -c filename &gt; filename.xz</p>
+<p>解压命令：<code>xz -d filename.xz</code></p>
+<p>查看命令：<code>xzcat filename.xz</code></p>
+<h4 id="二、目录压缩"><a href="#二、目录压缩" class="headerlink" title="二、目录压缩"></a>二、目录压缩</h4><p>压缩：<code>tar [压缩算法] -c -v -f filename.tar.[压缩后缀] --exclude=filepath/a --exclude=filepath/b</code></p>
+<blockquote>
+<p>[压缩算法]指的就是gzip,bzip2,xz三种之一，分别对应-z, -j , -J , 三者只能取一个或者不指定。</p>
+<p>[压缩后缀]要和压缩算法一致，取gz,bz2,xz其中之一。如果不指定压缩后缀则称生成文件为<strong>tarfile</strong>, 指定了则称之为<strong>tarball</strong></p>
+<p>–exclude指定目录里的哪些文件不压缩到文件中</p>
+</blockquote>
+<p>查看： <code>tar -t -v -f filename.tar.[压缩后缀]</code></p>
+<p>解压缩：<code>tar -x -v -f filename.tar.[压缩后缀] -C [目录名称]</code>，如果不指定-C则解压缩到当前目录</p>
+<h5 id="利用管线命令与资料流复制"><a href="#利用管线命令与资料流复制" class="headerlink" title="利用管线命令与资料流复制"></a>利用管线命令与资料流复制</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd destDir</span><br><span class="line">tar -cvf - sourcedir | tar -xvf -</span><br></pre></td></tr></table></figure>
+<p>利用上述命令可以快速把源目录的文件复制到目标目录，这里的 <code>-</code> 可以看成是内存中的一块缓存区域，即先把源文件压缩写入该缓存，再从该缓存输出到目标目录</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-10-02T11:43:19+08:00"
-              content="2019-10-02">
-          10-02
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux学习/" rel="tag"># Linux学习</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/10/02/Flutter控件研究之Image组件/" itemprop="url">
-            <span itemprop="name">Flutter控件研究之Image组件</span>
-          </a>
-      </h2>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/21/支持新的Flutter Android插件API（翻译）/" rel="prev" title="支持新的Flutter Android插件API（翻译）">
+      <i class="fa fa-chevron-left"></i> 支持新的Flutter Android插件API（翻译）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -232,6 +303,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、文件压缩"><span class="nav-number">1.</span> <span class="nav-text">一、文件压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、目录压缩"><span class="nav-number">2.</span> <span class="nav-text">二、目录压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用管线命令与资料流复制"><span class="nav-number">2.1.</span> <span class="nav-text">利用管线命令与资料流复制</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

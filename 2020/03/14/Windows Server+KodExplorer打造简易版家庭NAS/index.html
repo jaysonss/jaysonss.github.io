@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,19 +21,19 @@
   </script>
 
   <meta name="description" content="笔者家里的电信宽带刚申请换上了公网ip, 加上有一台闲置的windows电脑，所以想到了把它打造成家庭nas。 中间经历了各种情况，踩了很多坑，现记录如下：  公网ip无用家里网络是电信网关+TPLink, 电信网关负责拨号获取ip，TPLink做路由转发。在成功切换成公网ip后，笔者兴致冲冲的去ping, 结果发现居然是req timeout，尝试放开各种端口发现也不通。笔者所用网关型号为tew">
-<meta name="keywords" content="DIY">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows Server+KodExplorer打造简易版家庭NAS">
-<meta property="og:url" content="http://yoursite.com/2020/03/14/Windows Server+KodExplorer打造简易版家庭NAS/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/03/14/Windows%20Server+KodExplorer%E6%89%93%E9%80%A0%E7%AE%80%E6%98%93%E7%89%88%E5%AE%B6%E5%BA%ADNAS/index.html">
 <meta property="og:site_name" content="Jayson&#39;s Blog">
 <meta property="og:description" content="笔者家里的电信宽带刚申请换上了公网ip, 加上有一台闲置的windows电脑，所以想到了把它打造成家庭nas。 中间经历了各种情况，踩了很多坑，现记录如下：  公网ip无用家里网络是电信网关+TPLink, 电信网关负责拨号获取ip，TPLink做路由转发。在成功切换成公网ip后，笔者兴致冲冲的去ping, 结果发现居然是req timeout，尝试放开各种端口发现也不通。笔者所用网关型号为tew">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-15T13:58:57.776Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-03-14T15:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-15T13:58:57.776Z">
+<meta property="article:author" content="Jayson">
+<meta property="article:tag" content="DIY">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows Server+KodExplorer打造简易版家庭NAS">
-<meta name="twitter:description" content="笔者家里的电信宽带刚申请换上了公网ip, 加上有一台闲置的windows电脑，所以想到了把它打造成家庭nas。 中间经历了各种情况，踩了很多坑，现记录如下：  公网ip无用家里网络是电信网关+TPLink, 电信网关负责拨号获取ip，TPLink做路由转发。在成功切换成公网ip后，笔者兴致冲冲的去ping, 结果发现居然是req timeout，尝试放开各种端口发现也不通。笔者所用网关型号为tew">
 
-<link rel="canonical" href="http://yoursite.com/2020/03/14/Windows Server+KodExplorer打造简易版家庭NAS/">
+<link rel="canonical" href="http://yoursite.com/2020/03/14/Windows%20Server+KodExplorer%E6%89%93%E9%80%A0%E7%AE%80%E6%98%93%E7%89%88%E5%AE%B6%E5%BA%ADNAS/">
 
 
 <script id="page-configurations">
@@ -145,7 +145,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="default">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/Windows Server+KodExplorer打造简易版家庭NAS/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/Windows%20Server+KodExplorer%E6%89%93%E9%80%A0%E7%AE%80%E6%98%93%E7%89%88%E5%AE%B6%E5%BA%ADNAS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -194,7 +194,7 @@
 <hr>
 <h2 id="公网ip无用"><a href="#公网ip无用" class="headerlink" title="公网ip无用"></a>公网ip无用</h2><p>家里网络是电信网关+TPLink, 电信网关负责拨号获取ip，TPLink做路由转发。在成功切换成公网ip后，笔者兴致冲冲的去ping, 结果发现居然是req timeout，尝试放开各种端口发现也不通。笔者所用网关型号为tewa-600NEM，后来一顿搜索，解决了这个问题：</p>
 <ul>
-<li>打开网关隐藏配置信息: 192.168.1.1/dumpcfg.conf （192.168.1.1是网关地址）下载隐藏配置,用记事本之类软件打开此文件，搜索“telecomadmin”即可，密码格式为”telecomadmin<strong><em>**</em></strong>“</li>
+<li>打开网关隐藏配置信息: 192.168.1.1/dumpcfg.conf （192.168.1.1是网关地址）下载隐藏配置,用记事本之类软件打开此文件，搜索“telecomadmin”即可，密码格式为”telecomadmin********”</li>
 <li>获取密码后登陆网关, 用户名为useradmin, 密码用上一步获取的密码就可以进入超级模式</li>
 <li>选择宽带线路，把路由模式从<strong>路由</strong>改为<strong>桥接</strong></li>
 <li>打开TPLink, 选择上网模式为拨号上网，拿到ip</li>
@@ -227,19 +227,33 @@
 </blockquote>
 <p>mac加载盘符</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir smb</span><br><span class="line">mount_smbfs //$&#123;用户名&#125;:$&#123;密码&#125;/$&#123;盘符名称&#125; ./smb</span><br></pre></td></tr></table></figure>
+
+
+
 <p>进入盘符备份</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd smb</span><br><span class="line">zip -r -FS backup.zip $&#123;数据目录&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>上传oss</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>#安装oss2</span><br><span class="line">pip install oss2</span><br><span class="line"><span class="meta">#</span>#上传(oss.py可以直接在官网demo中找到，自己填上AccessId和AccessSecret即可)</span><br><span class="line">python oss.py smb/backup.zip</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#安装oss2</span></span></span><br><span class="line">pip install oss2</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#上传(oss.py可以直接在官网demo中找到，自己填上AccessId和AccessSecret即可)</span></span></span><br><span class="line">python oss.py smb/backup.zip</span><br></pre></td></tr></table></figure>
+
+
+
 <p>上述任务可以做成定时任务，Linux上可以用crontab, Mac上推荐用launchctl, 下面推荐launchctl的方法</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Library/LaunchAgents</span><br><span class="line">touch com.kod.backup.plist</span><br><span class="line">launchctl load -w com.kod.backup.plist</span><br><span class="line">launchctl start com.kod.backup.plist</span><br></pre></td></tr></table></figure>
+
 <p>如果要停止定时任务</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">launchctl stop com.kod.backup.plist</span><br><span class="line">launchctl unload -w com.kod.backup.plist</span><br></pre></td></tr></table></figure>
+
 <p>下面是笔者写的com.kod.backup.plist内容，每隔10个小时执行一次部署脚本</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span><br><span class="line">&lt;plist version="1.0"&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">	&lt;key&gt;Label&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;com.kod.backup&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;ProgramArguments&lt;/key&gt;</span><br><span class="line">	&lt;array&gt;</span><br><span class="line"><span class="meta">	  #</span>#这是执行脚本的位置</span><br><span class="line">		&lt;string&gt;/Users/xxx/xxx/backup.sh&lt;/string&gt;</span><br><span class="line">	&lt;/array&gt;</span><br><span class="line"><span class="meta">	#</span>#周期性执行，可以替换为特定时间点执行StartCalendarInterval</span><br><span class="line">	&lt;key&gt;StartInterval&lt;/key&gt;</span><br><span class="line"><span class="meta">	#</span>#单位为秒</span><br><span class="line">	&lt;integer&gt;36000&lt;/integer&gt;</span><br><span class="line"><span class="meta">	#</span>#日志目录</span><br><span class="line">	&lt;key&gt;StandardOutPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/xxx/xxx/run.log&lt;/string&gt;</span><br><span class="line"><span class="meta">	#</span>#错误日志目录</span><br><span class="line">	&lt;key&gt;StandardErrorPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/xxx/xx/run.err&lt;/string&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span><br><span class="line">&lt;plist version=&quot;1.0&quot;&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">	&lt;key&gt;Label&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;com.kod.backup&lt;/string&gt;</span><br><span class="line">	&lt;key&gt;ProgramArguments&lt;/key&gt;</span><br><span class="line">	&lt;array&gt;</span><br><span class="line"><span class="meta">	  #</span><span class="bash"><span class="comment">#这是执行脚本的位置</span></span></span><br><span class="line">		&lt;string&gt;/Users/xxx/xxx/backup.sh&lt;/string&gt;</span><br><span class="line">	&lt;/array&gt;</span><br><span class="line"><span class="meta">	#</span><span class="bash"><span class="comment">#周期性执行，可以替换为特定时间点执行StartCalendarInterval</span></span></span><br><span class="line">	&lt;key&gt;StartInterval&lt;/key&gt;</span><br><span class="line"><span class="meta">	#</span><span class="bash"><span class="comment">#单位为秒</span></span></span><br><span class="line">	&lt;integer&gt;36000&lt;/integer&gt;</span><br><span class="line"><span class="meta">	#</span><span class="bash"><span class="comment">#日志目录</span></span></span><br><span class="line">	&lt;key&gt;StandardOutPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/xxx/xxx/run.log&lt;/string&gt;</span><br><span class="line"><span class="meta">	#</span><span class="bash"><span class="comment">#错误日志目录</span></span></span><br><span class="line">	&lt;key&gt;StandardErrorPath&lt;/key&gt;</span><br><span class="line">	&lt;string&gt;/Users/xxx/xx/run.err&lt;/string&gt;</span><br><span class="line">&lt;/dict&gt;</span><br><span class="line">&lt;/plist&gt;</span><br></pre></td></tr></table></figure>
+
+
+
 <p>这里有几个点需要注意：</p>
 <ul>
-<li>脚本是否具有可执行权限，如果没有直接<code>chmod +x</code>解决</li>
+<li>脚本是否具有可执行权限，如果没有直接<code>chmod +x </code>解决</li>
 <li>如果用到了python，记得使用/usr/local/bin/python而不是直接使用python，否则会报找不到oss2的错误</li>
 </ul>
 
@@ -260,11 +274,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/16/Android Native与Flutter混合开发实践/" rel="prev" title="Android Native与Flutter混合开发探究">
+    <a href="/2020/02/16/Android%20Native%E4%B8%8EFlutter%E6%B7%B7%E5%90%88%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" rel="prev" title="Android Native与Flutter混合开发探究">
       <i class="fa fa-chevron-left"></i> Android Native与Flutter混合开发探究
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/03/21/支持新的Flutter Android插件API（翻译）/" rel="next" title="支持新的Flutter Android插件API（翻译）">
+    <a href="/2020/03/21/%E6%94%AF%E6%8C%81%E6%96%B0%E7%9A%84Flutter%20Android%E6%8F%92%E4%BB%B6API%EF%BC%88%E7%BF%BB%E8%AF%91%EF%BC%89/" rel="next" title="支持新的Flutter Android插件API（翻译）">
       支持新的Flutter Android插件API（翻译） <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -326,7 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#公网ip无用"><span class="nav-number">1.</span> <span class="nav-text">公网ip无用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署私有网盘"><span class="nav-number">2.</span> <span class="nav-text">部署私有网盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名"><span class="nav-number">3.</span> <span class="nav-text">域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟服务器配置"><span class="nav-number">4.</span> <span class="nav-text">虚拟服务器配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备份"><span class="nav-number">5.</span> <span class="nav-text">备份</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E7%BD%91ip%E6%97%A0%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">公网ip无用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E7%A7%81%E6%9C%89%E7%BD%91%E7%9B%98"><span class="nav-number">2.</span> <span class="nav-text">部署私有网盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D"><span class="nav-number">3.</span> <span class="nav-text">域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">虚拟服务器配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD"><span class="nav-number">5.</span> <span class="nav-text">备份</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -340,13 +354,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -371,16 +385,16 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jayson</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.4.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
   </div>
 
         
@@ -400,9 +414,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

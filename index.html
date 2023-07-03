@@ -143,6 +143,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/07/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%80%A7%E8%83%BD%E5%92%8C%E5%8A%9F%E8%80%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayson">
+      <meta itemprop="description" content="Code 4 Fun.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayson's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%80%A7%E8%83%BD%E5%92%8C%E5%8A%9F%E8%80%97/" class="post-title-link" itemprop="url">计算机的性能和功耗</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-07-03 23:08:40 / Modified: 23:19:07" itemprop="dateCreated datePublished" datetime="2023-07-03T23:08:40+08:00">2023-07-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>计算机性能和两个因素有关：响应时间和吞吐率。吞吐量和硬件有关，通过堆硬件就可以提高，重点还是响应时间</p>
+<p>响应时间 = 指令数 * 指令执行的周期数(CPI) * CPU时钟周期时间</p>
+<ul>
+<li>指令数和代码质量有关，垃圾代码往往生成的指令会有很多冗余</li>
+<li>CPI是指令执行的周期数，现代CPU可以通过流水线等技术优化cpu cycle</li>
+<li>CPU时钟周期时间是CPU主频决定的，主频越大，执行时间越短</li>
+</ul>
+<blockquote>
+<p>cpu内部有一个晶体振荡器(简称晶振)，每一次滴答就是一个时钟周期时间，计算方式为1/频率，比如cpu为2.8G hz，那周期时间就是1/2.8G，频率越大，cpu工作越快。</p>
+</blockquote>
+<h2 id="程序运行的时间统计"><a href="#程序运行的时间统计" class="headerlink" title="程序运行的时间统计"></a>程序运行的时间统计</h2><p>最常用的是计算时间差：程序结束的时间点-程序开始的时间点，这种时间称为wall clock time或者Ellapsed time。</p>
+<p>这种计算方式有误差，比如在linux上计算wall clock time:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@hwsrv-<span class="number">998587</span>:~# time seq <span class="number">100000</span> | wc -l</span><br><span class="line"><span class="number">100000</span></span><br><span class="line"></span><br><span class="line">real    0m0.011s  <span class="comment">// wall clock time</span></span><br><span class="line">user    0m0.003s  <span class="comment">//**用户态**执行程序耗费的时间</span></span><br><span class="line">sys    0m0.002s  <span class="comment">//**内核态**执行程序耗费的时间</span></span><br></pre></td></tr></table></figure>
+
+<p>程序真正执行的时长是user+sys，很明显比real小，因为cpu不停地在不同的程序间切换，所以程序的执行时间会偏大</p>
+<p><img src="https://jaysonss-picbed.oss-cn-shanghai.aliyuncs.com/uPic/Untitled.png" alt="wct"></p>
+<p>但是上面的现象也不是绝对的，比如在多核设备上，user和sys可能会同时执行，那最终的real可能就会小于user+sys</p>
+<h2 id="功耗"><a href="#功耗" class="headerlink" title="功耗"></a>功耗</h2><p>芯片本质上就是一个巨大的晶体管迷宫，通过控制开关来实现复杂运算。制程越短，晶体管的密度就越大，相应的性能就越好，但是由此可能会带来负面影响：晶体管散热不及时导致工作出错或者被干脆被烧毁，同时功耗也会增加，功耗的计算公式为：</p>
+<p>功耗 ~= 1/2 ×负载电容×电压的平方×开关频率×晶体管数量</p>
+<p><img src="https://jaysonss-picbed.oss-cn-shanghai.aliyuncs.com/uPic/Untitled%201.png" alt="gh"></p>
+<h2 id="其他提升性能的方式"><a href="#其他提升性能的方式" class="headerlink" title="其他提升性能的方式"></a>其他提升性能的方式</h2><p>既然晶体管数量提升有上限，那提升性能就只能在软件层面多优化了，主要是对CPI的优化，包括：</p>
+<ul>
+<li><p>并行执行，核心思想就是分治，优化后的执行时间 = 受优化影响的执行时间 / 加速倍数 + 不受影响的执行时间（<strong>阿姆达尔定律</strong>），需要注意的是分治最后的汇总是不并行的，所以如果汇总时间长那优化的效果就会有限)</p>
+<p><img src="https://jaysonss-picbed.oss-cn-shanghai.aliyuncs.com/uPic/Untitled%202.png" alt="concurrent"></p>
+</li>
+<li><p>加快大概率事件，gpu性能比cpu好就是基于此</p>
+</li>
+<li><p>通过流水线提升性能，将执行的指令拆分然后并行执行</p>
+</li>
+<li><p>通过预测提升性能， 比如在条件语句执行前可以通过提前预测判断语句一定会执行，于是就可以提前运行语句代码从而加快执行速度</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/06/14/FlutterBoost%E8%B7%AF%E7%94%B1%E7%AE%80%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -890,13 +980,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
